@@ -2,8 +2,8 @@ package com.example.AlejandroSPEOI.user;
 
 import java.util.List;
 
-import com.example.AlejandroSPEOI.game.Game;
-import com.example.AlejandroSPEOI.favGame.FavGame;
+import com.example.AlejandroSPEOI.game.Games;
+import com.example.AlejandroSPEOI.favGame.FavGames;
 import com.example.AlejandroSPEOI.user.dto.UserDTO;
 
 import jakarta.persistence.CascadeType;
@@ -29,12 +29,12 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Game> juegos;
+    private List<Games> juegos;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<FavGame> juegosFavoritos;
+    private List<FavGames> juegosFavoritos;
 
     static User fromDTO(UserDTO usuarioDTO) {
-        return new User(0, usuarioDTO.getNombre(), usuarioDTO.getCorreo(), null, null);
+        return new User(0, usuarioDTO.getUser(), usuarioDTO.getPassword(), null, null);
     }
 }

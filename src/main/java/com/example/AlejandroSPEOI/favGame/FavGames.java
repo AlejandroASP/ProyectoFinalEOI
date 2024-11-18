@@ -1,7 +1,6 @@
-package com.example.AlejandroSPEOI.game;
+package com.example.AlejandroSPEOI.favGame;
 
-import java.sql.Date;
-
+import com.example.AlejandroSPEOI.game.Games;
 import com.example.AlejandroSPEOI.user.User;
 
 import jakarta.persistence.Entity;
@@ -19,15 +18,17 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Game {
+public class FavGames {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String nombre;
-    private Date fechaCompletado;
-    private long horasDedicadas;
+    private String motivo; // Campo opcional
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private User usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "juego_id")
+    private Games juego;
 }

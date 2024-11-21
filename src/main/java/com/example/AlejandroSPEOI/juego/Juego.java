@@ -1,8 +1,9 @@
-package com.example.AlejandroSPEOI.favGame;
+package com.example.AlejandroSPEOI.juego;
 
-import com.example.AlejandroSPEOI.game.Games;
-import com.example.AlejandroSPEOI.user.User;
+import com.example.AlejandroSPEOI.genero.Genero;
+import com.example.AlejandroSPEOI.juego.dto.JuegoDTO;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,17 +19,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FavGames {
+public class Juego {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String motivo; // Campo opcional
-
+    private Long id;
+    private String nombre;
+    private Boolean completado;
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private User usuario;
-
-    @ManyToOne
-    @JoinColumn(name = "juego_id")
-    private Games juego;
+    @JoinColumn(name = "fk_genero")
+    private Genero genero;
 }

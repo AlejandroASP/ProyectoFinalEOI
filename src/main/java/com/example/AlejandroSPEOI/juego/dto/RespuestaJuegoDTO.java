@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ResponseJuegoDTO {
+public class RespuestaJuegoDTO {
     private Juegos game;
 
 }

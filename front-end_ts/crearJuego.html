@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="/src/crearJuego.ts"></script>
+    <script type="module" src="src/crearJuego.ts"></script>
     <link rel="stylesheet" href="style.css"/>
     <title>Crear juego</title>
 </head>
@@ -28,21 +28,34 @@
       </div>
     </div>
 
-    <template id="eventoTemplate">
-      <div class="col">
-        <div class="card h-100">
-          <img src="" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <button class="btn btn-sm btn-danger delete"><i class="bi bi-trash"></i></button>
-            <h5 class="card-title"></h5>
-            <p class="card-text"></p>
-          </div>
-          <div class="card-footer d-flex justify-content-between">
-            <small class="text-body-secondary fecha"></small>
-            <small class="text-body-secondary precio"></small>
-          </div>
-        </div>
-      </div>
-    </template>
+    <div class="container mt-3">
+        <form id="formEvento">
+            <label class="mb-3 row">
+                <span class="col-sm-2 col-form-label">Nombre</span>
+                <div class="col-sm-10">
+                    <input type="text" name="nombre" class="form-control">
+                </div>
+            </label>
+            <label class="mb-3 row">
+                <span class="col-sm-2 col-form-label">Género</span>
+                <div class="col-sm-10">
+                    <select name="genero" id="genero" class="form-control">
+                        <!-- Opciones de género se llenarán dinámicamente -->
+                    </select>
+                </div>
+            </label>
+            <label class="mb-3 row">
+                <span class="col-sm-2 col-form-label">Completado</span>
+                <div class="col-sm-10">
+                    <input type="checkbox" name="completado" class="form-check-input">
+                </div>
+            </label>
+            <div class="mt-3">
+                <button class="btn btn-primary" type="submit">Añadir</button>
+            </div>
+        </form>
+    </div>
+    
+    
   </body>
 </html>

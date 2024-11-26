@@ -17,7 +17,7 @@ async function cargarJuegos() {
         }
         contenedor.innerHTML = "";
         juegos.forEach(addJuego);
-        
+
     } catch (error) {
         console.log("Ha ocurrido un error a la hora de cargar los juegos");
     }
@@ -30,13 +30,19 @@ function addJuego(juego: Juego) {
     mirror.querySelector(".card-text")!.textContent = juego.completado ? "Sí" : "No";
 
     const columna = mirror.firstChild!;
-    mirror.querySelector("button.delete")!.addEventListener("click", async () => {
-        try {
-            await juegoServ.deleteJuego(juego.id!);
-            await cargarJuegos();
-        } catch (error) {
-            console.error("Error al eliminar el juego")
-        }
+    const deleteButton = mirror.querySelector("button.delete")!;
+    const updateButton = mirror.querySelector("button.update")!;
+
+    // Configuración del botón "Eliminar"
+    deleteButton.addEventListener("click", async () => {
+        await juegoServ.deleteJuego(juego.id!);
+        columna.remove();
+    });
+
+    // Configuración del botón "Actualizar"
+    updateButton.addEventListener("click", () => {
+        // Redirige a la página de actualización con el ID del juego como parámetro en la URL
+        window.location.href = `actuJuego.html?id=${juego.id}`;
     });
 
     contenedor.append(mirror);

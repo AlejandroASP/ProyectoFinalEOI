@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.example.AlejandroSPEOI.genero.GeneroService;
+
+import com.example.AlejandroSPEOI.genero.dto.GeneroDTO;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -37,6 +40,15 @@ public class GeneroController {
     @PostMapping
     public Genero createGenero(@RequestBody Genero genero) {
         return generoService.save(genero);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Genero> actualizarGenero(@PathVariable Long id, @RequestBody Genero genero) {
+        GeneroDTO generoDTO = new GeneroDTO();
+        generoDTO.setNombre(null);
+
+        Genero generoActu = generoService.updateGenero(id, generoDTO);
+        return ResponseEntity.ok(generoActu);
     }
 
     @DeleteMapping("/{id}")

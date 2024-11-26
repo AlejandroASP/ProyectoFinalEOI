@@ -16,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @CrossOrigin(origins = "*")
@@ -39,6 +40,21 @@ public class JuegoController {
     @PostMapping
     public Juego createJuego(@RequestBody JuegoDTO juegoDTO) {
         return juegoService.save(juegoDTO);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Juego> updateJuego(@PathVariable Long id, @RequestBody Juego juego) {
+        // Convertir el objeto Juego a JuegoDTO
+        JuegoDTO juegoDTO = new JuegoDTO();
+        juegoDTO.setNombre(juego.getNombre());
+        juegoDTO.setCompletado(juego.getCompletado());
+        if (juego.getGenero() != null) {
+            juegoDTO.setGeneroId(juego.getGenero().getId());
+        }
+
+        // Llamar al servicio con el DTO
+        Juego juegoActu = juegoService.updateJuego(id, juegoDTO);
+        return ResponseEntity.ok(juegoActu);
     }
 
     @DeleteMapping("/{id}")

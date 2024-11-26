@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.AlejandroSPEOI.genero.dto.GeneroDTO;
+
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -24,6 +26,13 @@ public class GeneroService {
 
     public Genero save(Genero genero) {
         return generoRepository.save(genero);
+    }
+
+    public Genero updateGenero(Long id, GeneroDTO generoDTO){
+        Genero generoExist = generoRepository.findById(id).orElseThrow(() -> new RuntimeException("Genero no encontrado"));
+        generoExist.setNombre(generoDTO.getNombre());
+
+        return generoRepository.save(generoExist);
     }
 
     public void deleteById(Long id) {

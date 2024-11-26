@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const nombre = (form.elements.namedItem('nombre') as HTMLInputElement).value;
         const generoId = (form.elements.namedItem('genero') as HTMLSelectElement).value;
-        const completado = (form.elements.namedItem('completado') as HTMLInputElement).checked;
+        const completado = (form.elements.namedItem('completado') as HTMLSelectElement).value === "true";
 
         const juego: Juego = {
             nombre,
@@ -39,10 +39,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
             const nuevoJuego = await juegosService.addJuego(juego);
             console.log('Juego creado:', nuevoJuego);
-            // Aquí puedes añadir código para actualizar la UI o mostrar un mensaje de éxito
+            window.location.href = "index.html"; //Al añadir el juego, se manda al index
         } catch (error) {
             console.error('Error al crear el juego:', error);
-            // Aquí puedes añadir código para manejar el error
         }
     });
 });

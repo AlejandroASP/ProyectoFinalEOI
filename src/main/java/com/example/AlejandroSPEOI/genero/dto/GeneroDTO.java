@@ -1,5 +1,6 @@
 package com.example.AlejandroSPEOI.genero.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -7,5 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GeneroDTO {
     private Long id;
+    @NotBlank(message = "El nombre del genero no se puede dejar vacío")
     private String nombre;
 }

@@ -7,8 +7,9 @@ export class JuegosService {
     http: Http = new Http();
 
     async getJuegos(): Promise<Juego[]> {
-        const response = await this.http.get<JuegosResponse>(`${SERVER}/juegos`);
-        return response.juegos;
+        const response = await this.http.get<Juego[]>(`${SERVER}/juegos`);
+        console.log('Respuesta del servidor:', response); // Depuración
+        return response;
     }
 
     async addJuego(juego: Juego): Promise<Juego> {

@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 public class JuegoDTO {
 
     private Long id;
+    @NotBlank (message = "El nombre del juego no se puede dejar vacío.")
     private String nombre;
     private Boolean completado;
     private Long generoId;

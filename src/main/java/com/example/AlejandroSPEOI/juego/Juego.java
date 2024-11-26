@@ -3,7 +3,7 @@ package com.example.AlejandroSPEOI.juego;
 import com.example.AlejandroSPEOI.genero.Genero;
 import com.example.AlejandroSPEOI.juego.dto.JuegoDTO;
 
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
